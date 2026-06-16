@@ -9,14 +9,19 @@ recommended_use:
   - QYPM 000-007 阶段路由
   - 市场/竞品/VOC/ROI/供应链/合规/专利分析
   - Excel/PPT 上会交付前的结构化梳理
-source_agents:
-  pm_triage: ../01-product-manager-workflow-agent
-  qypm_funnel: ../02-qypm-6-8-v2-agent
-important_paths:
-  pm_agent: ../01-product-manager-workflow-agent/AGENT.md
-  qypm_agent: ../02-qypm-6-8-v2-agent/AGENT.md
-  qypm_spec: ../02-qypm-6-8-v2-agent/source/qypm-6-8-v2/qypm-6-8-v2-全流程工作规范.md
-  qypm_controller: ../02-qypm-6-8-v2-agent/source/qypm-6-8-v2/codex-skill/qypm-codex-product-workflow/SKILL.md
+upstream_repositories:
+  core_skill: https://github.com/ianyoufather-2007/amazon-product-manager-skill
+  pm_workflow_agent: https://github.com/ianyoufather-2007/01-product-manager-workflow-agent
+bundled_scope:
+  - clean routing layer
+  - public stage-gate summaries
+  - prompt templates
+  - anonymized examples
+not_bundled:
+  - raw ASIN data
+  - internal QYPM source package
+  - Excel/PPT/PDF deliverables
+  - screenshots/cache/private business records
 output_rules:
   - 默认中文输出
   - 默认 Amazon US
@@ -24,6 +29,7 @@ output_rules:
   - 缺失数据必须标注 P0/P1/P2
   - 不编造数据
   - 不替用户或会议做最终裁定
+  - 不替代法律、合规、财务、专利或采购专业意见
 privacy_rules:
   - 不复制 raw ASIN 数据
   - 不发布 Excel/PPT/PDF/截图/cache

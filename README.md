@@ -1,24 +1,53 @@
 # Amazon PM Integrated Agent
 
-这是一个整合版 Agent：把 `01-product-manager-workflow-agent` 的 PM 判断能力，和 `02-qypm-6-8-v2-agent` 的 QYPM 000-007 漏斗执行能力合在一起。
+An integrated Amazon product-management agent that routes loose product ideas into PM triage or a structured QYPM 000-007 research workflow.
 
-它的核心职责不是替用户拍板，而是先判断问题处于哪个产品开发阶段，再决定是走轻量 PM 判断，还是进入完整 QYPM 漏斗，最后输出可验证、可上会、可继续执行的材料。
+这是一个面向 Amazon 选品、产品定义和上会决策的整合型 Agent。它不会替你拍板，而是先判断问题处于哪个产品开发阶段，再选择轻量 PM 判断或完整 QYPM 漏斗，最后输出可验证、可复盘、可继续执行的材料。
 
-## 和 01 / 02 的关系
+## What It Helps With
 
-| Agent | 定位 | 适合场景 |
-| --- | --- | --- |
-| `01-product-manager-workflow-agent` | PM 判断入口 | 问方向、问机会、问风险、问汇报口径 |
-| `02-qypm-6-8-v2-agent` | QYPM 漏斗执行 | 有数据后跑 000-007、Excel、PPT、QA |
-| `amazon-pm-integrated-agent` | 统一调度层 | 先判断是否值得深挖，再路由到 PM 判断或 QYPM 漏斗 |
+- 判断一个品类或产品方向是否值得继续深挖。
+- 把零散的关键词、BSR、ASIN、Review、报价和合规信息放进正确阶段。
+- 区分事实层、判读层、风险层和待决策层，避免过早下结论。
+- 为老板汇报、会议讨论、Excel/PPT 交付前整理结构化材料。
+- 给出 P0 / P1 / P2 数据缺口和下一步最小验证动作。
 
-## 快速启动语
+## How It Works
 
-```text
-请以 Amazon PM Integrated Agent 的身份，先判断我的问题属于轻量 PM 判断还是完整 QYPM 漏斗，再输出事实、判读、风险、数据缺口和下一步动作。
+```mermaid
+flowchart TD
+    A[User question or product idea] --> B{Evidence level}
+    B -->|Loose idea / vague direction| C[PM Triage]
+    B -->|BSR / keywords / ABA / CPC| D[QYPM 001-003]
+    B -->|ASIN / search results| E[QYPM 004]
+    B -->|Review / Q&A / Keepa / listing| F[QYPM 005]
+    B -->|Quote / BOM / FBA / sample / compliance / patent| G[QYPM 006-007]
+    C --> H[Decision memo and data gaps]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    H --> I[Meeting-ready next actions]
 ```
 
-## 典型使用
+## Quick Start
+
+Copy this prompt into Codex, ChatGPT, or another agent runner together with `AGENT.md`:
+
+```text
+请以 Amazon PM Integrated Agent 的身份工作。先判断我的问题属于轻量 PM 判断还是完整 QYPM 漏斗，再输出事实、判读、风险、数据缺口和下一步动作。不要编造销量、搜索量、利润或评论结论；缺失数据用 P0/P1/P2 标注。
+```
+
+Then provide what you already have:
+
+```text
+市场：Amazon US
+方向：coffee capsule holder
+已有资料：主关键词、几个竞品 ASIN、部分 Review 印象
+目标：判断是否值得进入完整 QYPM 漏斗
+```
+
+## Example Prompts
 
 ```text
 我在看 coffee capsule holder 这个方向，只有一些关键词和竞品印象。先帮我判断是否值得进入完整 QYPM 漏斗。
@@ -32,7 +61,44 @@
 我有竞品评论和 Q&A，想做 VOC 产品定义。请按 QYPM 005 输出事实层、判读层、风险层和待决策层。
 ```
 
-## 文件结构
+## Relationship To Upstream Work
+
+| Project | Role | Status |
+| --- | --- | --- |
+| [`amazon-product-manager-skill`](https://github.com/ianyoufather-2007/amazon-product-manager-skill) | Core Amazon PM skill and decision framework | Public |
+| [`01-product-manager-workflow-agent`](https://github.com/ianyoufather-2007/01-product-manager-workflow-agent) | Lightweight PM workflow wrapper | Public |
+| QYPM 000-007 workflow package | Full internal funnel for market, competitor, VOC, ROI, supply chain, compliance, patent, and sample validation | Not bundled here |
+| `amazon-pm-integrated-agent` | Clean routing layer that combines PM triage with QYPM stage gates | This repo |
+
+This repository intentionally publishes the clean agent layer, templates, examples, and stage-gate summaries. It does not include private raw data, internal reports, screenshots, supplier quotes, or customer/business records.
+
+## Output Template
+
+```text
+## 结论摘要
+
+## 当前阶段判断
+
+## 已有事实
+
+## 信号判读
+
+## 风险与不可逆项
+
+## 数据缺口
+
+| 优先级 | 缺口 | 为什么重要 | 下一步 |
+| --- | --- | --- | --- |
+| P0 |  |  |  |
+| P1 |  |  |  |
+| P2 |  |  |  |
+
+## 下一步动作
+
+## 待会议裁定问题
+```
+
+## Repository Structure
 
 ```text
 amazon-pm-integrated-agent/
@@ -45,13 +111,22 @@ amazon-pm-integrated-agent/
 │   ├── qypm-stage-gates.md
 │   └── open-source-cleanup-checklist.md
 └── examples/
+    ├── anonymized-opportunity-review.md
     ├── quick-opportunity-triage.md
     └── qypm-stage-run.md
 ```
 
-## 重要边界
+## Important Boundaries
 
-- 不直接复制或发布 `02` 中的原始数据、ASIN raw、PPT、Excel、PDF、截图、cache。
-- 不使用“建议立项 / 不建议 / Go / Kill”等最终裁定词，除非用户明确说明这是会议结论记录。
-- 缺失数据必须标注为 P0 / P1 / P2，不编造销量、搜索量、利润或评论结论。
-- 默认中文输出，默认市场为 Amazon US。
+- Do not publish raw ASIN exports, Excel/PPT/PDF deliverables, screenshots, cache folders, cookies, sessions, supplier quotes, or private business data.
+- Do not use final decision language such as "Go", "Kill", "建议立项", or "不建议立项" unless the user explicitly says the meeting has already made that decision.
+- Missing evidence must be marked as P0 / P1 / P2. Do not invent sales, search volume, profit, FBA, compliance, patent, or review conclusions.
+- Default output language is Chinese. Default marketplace is Amazon US.
+
+## Disclaimer
+
+This project is a research and decision-support workflow. It does not replace legal, compliance, finance, sourcing, customs, safety testing, patent, or professional marketplace advice.
+
+## License
+
+MIT License. See [LICENSE](LICENSE).

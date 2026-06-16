@@ -2,8 +2,9 @@
 
 ## Upstream Agents
 
-- `../01-product-manager-workflow-agent/AGENT.md` — PM 判断、机会初筛、风险梳理、老板汇报。
-- `../02-qypm-6-8-v2-agent/AGENT.md` — QYPM 000-007 漏斗执行、Excel/PPT/QA 交付。
+- [`amazon-product-manager-skill`](https://github.com/ianyoufather-2007/amazon-product-manager-skill) — 核心 Amazon PM 判断框架。
+- [`01-product-manager-workflow-agent`](https://github.com/ianyoufather-2007/01-product-manager-workflow-agent) — PM 判断、机会初筛、风险梳理、老板汇报。
+- QYPM 000-007 workflow package — 本地/私有漏斗执行包；本仓库只发布干净的路由层、阶段门摘要和脱敏示例。
 
 ## QYPM Key Files
 
@@ -22,4 +23,4 @@
 
 - `examples/quick-opportunity-triage.md` — 资料不足时先做 PM 初判。
 - `examples/qypm-stage-run.md` — 有数据时进入 QYPM 阶段执行。
-
+- `examples/anonymized-opportunity-review.md` — 脱敏机会评审完整输出示例。

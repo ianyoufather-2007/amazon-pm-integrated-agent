@@ -1,0 +1,30 @@
+id: amazon-pm-integrated-agent
+name: Amazon PM Integrated Agent
+version: 1.0.0
+language: zh-CN
+entrypoint: AGENT.md
+recommended_use:
+  - Amazon 产品机会初判
+  - 是否进入完整 QYPM 漏斗
+  - QYPM 000-007 阶段路由
+  - 市场/竞品/VOC/ROI/供应链/合规/专利分析
+  - Excel/PPT 上会交付前的结构化梳理
+source_agents:
+  pm_triage: ../01-product-manager-workflow-agent
+  qypm_funnel: ../02-qypm-6-8-v2-agent
+important_paths:
+  pm_agent: ../01-product-manager-workflow-agent/AGENT.md
+  qypm_agent: ../02-qypm-6-8-v2-agent/AGENT.md
+  qypm_spec: ../02-qypm-6-8-v2-agent/source/qypm-6-8-v2/qypm-6-8-v2-全流程工作规范.md
+  qypm_controller: ../02-qypm-6-8-v2-agent/source/qypm-6-8-v2/codex-skill/qypm-codex-product-workflow/SKILL.md
+output_rules:
+  - 默认中文输出
+  - 默认 Amazon US
+  - 区分事实层、判读层、风险层、待决策层
+  - 缺失数据必须标注 P0/P1/P2
+  - 不编造数据
+  - 不替用户或会议做最终裁定
+privacy_rules:
+  - 不复制 raw ASIN 数据
+  - 不发布 Excel/PPT/PDF/截图/cache
+  - 不发布账号、cookie、session、供应商报价或私有业务数据

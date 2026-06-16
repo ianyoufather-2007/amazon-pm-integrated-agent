@@ -1,0 +1,38 @@
+# Local/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python/cache artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Private source data and generated deliverables
+*.xlsx
+*.xls
+*.pptx
+*.ppt
+*.pdf
+*.csv
+*.json
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.zip
+*.7z
+cache/
+raw/
+outputs/
+screenshots/
+
+# Secrets and local sessions
+.env
+.env.*
+*.log
+*cookie*
+*session*
+*secret*
+*token*

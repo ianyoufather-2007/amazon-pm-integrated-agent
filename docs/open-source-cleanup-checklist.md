@@ -1,4 +1,4 @@
-# Open-Source Cleanup Checklist
+﻿# Open-Source Cleanup Checklist
 
 如果后续要把这个整合 Agent 开源，先按这个清单处理。
 
@@ -28,7 +28,7 @@
 
 1. 把 `source/` 中的真实数据换成 `examples/anonymized/`。
 2. 把本地路径改成相对路径。
-3. 将 QYPM 000-007 拆成干净的 `skills/` 或 `workflow/`。
+3. 将 000-007 stage-gate 拆成干净的 `skills/` 或 `workflow/`。
 4. 将工具脚本放到 `tools/`，并补 usage。
 5. 添加 LICENSE / SECURITY / CONTRIBUTING。
 6. 做敏感词扫描。

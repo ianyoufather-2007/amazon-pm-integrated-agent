@@ -1,4 +1,4 @@
-# QYPM Stage Gates
+﻿# Stage Gates
 
 ## Standard Flow
 

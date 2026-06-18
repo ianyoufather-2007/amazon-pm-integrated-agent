@@ -1,9 +1,9 @@
-# Roadmap
+﻿# Roadmap
 
 ## v0.1
 
 - Publish the clean integrated agent layer.
-- Document PM triage and QYPM routing.
+- Document PM triage and stage-gate routing.
 - Add anonymized examples and open-source cleanup rules.
 - Add contribution, security, and changelog files.
 
@@ -11,7 +11,7 @@
 
 - Add English README sections.
 - Add more anonymized category examples.
-- Expand QYPM 000-007 prompt templates.
+- Expand 000-007 stage-gate prompt templates.
 - Add install/use notes for Codex and ChatGPT.
 
 ## v0.3

@@ -1,4 +1,4 @@
-# Contributing
+﻿# Contributing
 
 Thanks for considering a contribution.
 
@@ -6,7 +6,7 @@ This project is a clean public agent layer for Amazon product-management workflo
 
 ## Good Contributions
 
-- Better prompt templates for PM triage or QYPM stage routing.
+- Better prompt templates for PM triage or research stage routing.
 - Anonymized examples with no real business data.
 - Clearer stage-gate definitions.
 - Documentation improvements in Chinese or English.

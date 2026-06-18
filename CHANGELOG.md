@@ -1,18 +1,17 @@
 # Changelog
 
+## 0.1.3 - 2026-06-18
+
+- Sanitized internal workflow naming in public docs and examples.
+- Renamed stage-gate docs and examples to remove private/internal prefixes.
+- Replaced private local workflow references with generic public stage-gate wording.
+
 ## 0.1.2 - 2026-06-18
 
 - Add English quick-start instructions.
 - Add anonymized low-data PM triage example.
-- Add anonymized BSR/ASIN QYPM stage-run example.
+- Add anonymized BSR/ASIN research stage-run example.
 - Improve README example inventory.
-
-## 0.1.0 - 2026-06-16
-
-- Initial public release of Amazon PM Integrated Agent.
-- Added PM triage and QYPM stage-routing instructions.
-- Added stage-gate documentation and quick examples.
-- Added open-source privacy cleanup checklist.
 
 ## 0.1.1 - 2026-06-16
 
@@ -20,3 +19,10 @@
 - Add anonymized opportunity review example.
 - Add contribution, security, and roadmap documents.
 - Add GitHub issue and pull request templates.
+
+## 0.1.0 - 2026-06-16
+
+- Initial public release of Amazon PM Integrated Agent.
+- Added PM triage and stage-gate routing instructions.
+- Added stage-gate documentation and quick examples.
+- Added open-source privacy cleanup checklist.

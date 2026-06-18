@@ -1,4 +1,4 @@
-# Example: Anonymized Low-Data PM Triage
+﻿# Example: Anonymized Low-Data PM Triage
 
 This example shows how the agent should behave when the user only has a product idea and scattered observations. It should not jump into product definition, ROI, supplier validation, or final Go/Kill language.
 
@@ -17,9 +17,9 @@ Goal: tell me if this is worth researching further.
 
 ## Expected Routing
 
-`PM Triage / QYPM 000`
+`PM Triage / Stage 000`
 
-The evidence is too light for QYPM 001-007. The agent should only provide an initial research direction and a minimum data checklist.
+The evidence is too light for Stages 001-007. The agent should only provide an initial research direction and a minimum data checklist.
 
 ## Expected Output
 
@@ -30,7 +30,7 @@ This can only be treated as an early opportunity screen. There may be a practica
 
 ## Current Stage
 
-PM Triage / QYPM 000.
+PM Triage / Stage 000.
 
 ## Known Facts
 

@@ -1,12 +1,12 @@
-id: amazon-pm-integrated-agent
+﻿id: amazon-pm-integrated-agent
 name: Amazon PM Integrated Agent
 version: 1.0.0
 language: zh-CN
 entrypoint: AGENT.md
 recommended_use:
   - Amazon 产品机会初判
-  - 是否进入完整 QYPM 漏斗
-  - QYPM 000-007 阶段路由
+  - 是否进入完整阶段门工作流
+  - 000-007 阶段路由
   - 市场/竞品/VOC/ROI/供应链/合规/专利分析
   - Excel/PPT 上会交付前的结构化梳理
 upstream_repositories:
@@ -19,7 +19,7 @@ bundled_scope:
   - anonymized examples
 not_bundled:
   - raw ASIN data
-  - internal QYPM source package
+  - internal stage-gate source package
   - Excel/PPT/PDF deliverables
   - screenshots/cache/private business records
 output_rules:

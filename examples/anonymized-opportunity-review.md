@@ -1,4 +1,4 @@
-# Example: Anonymized Opportunity Review
+﻿# Example: Anonymized Opportunity Review
 
 This example shows the intended behavior with anonymized, incomplete inputs. It is not a market recommendation.
 
@@ -12,12 +12,12 @@ This example shows the intended behavior with anonymized, incomplete inputs. It 
 - 初步观察：头部竞品评分高，但造型相似；部分评论提到占空间、抽屉卡顿、容量不匹配
 - 暂无：完整 BSR Top100、ABA、CPC、Keepa、供应商报价、专利检索
 
-目标：判断这个方向是否值得进入完整 QYPM 漏斗。
+目标：判断这个方向是否值得进入完整阶段门工作流。
 ```
 
 ## Expected Routing
 
-当前资料不足以进入产品定义、ROI 或供应链判断。应走 `PM Triage / QYPM 000`，输出机会初判和补数据清单。
+当前资料不足以进入产品定义、ROI 或供应链判断。应走 `PM Triage / Stage 000`，输出机会初判和补数据清单。
 
 ## Expected Output
 
@@ -28,7 +28,7 @@ This example shows the intended behavior with anonymized, incomplete inputs. It 
 
 ## 当前阶段判断
 
-PM Triage / QYPM 000 快筛。
+PM Triage / Stage 000 快筛。
 
 ## 已有事实
 
@@ -56,15 +56,15 @@ PM Triage / QYPM 000 快筛。
 | P0 | BSR Top100 和价格带 | 判断市场容量和头部集中度 | 下载并分层统计 |
 | P0 | 主关键词搜索量/ABA/CPC | 判断需求强度和获客压力 | 拉取关键词数据 |
 | P0 | 20-30 个竞品 ASIN | 判断形态、卖点和评论痛点 | 建立竞品池 |
-| P1 | Review/Q&A 痛点样本 | 验证体验改良是否真实高频 | 进入 QYPM 005 |
+| P1 | Review/Q&A 痛点样本 | 验证体验改良是否真实高频 | 进入阶段 005 |
 | P1 | 初步专利风险 | 避免结构方案踩雷 | 检索重点结构词 |
-| P2 | 供应商报价和包装尺寸 | 后续 ROI 需要 | 进入 QYPM 006 前补齐 |
+| P2 | 供应商报价和包装尺寸 | 后续 ROI 需要 | 进入阶段 006 前补齐 |
 
 ## 下一步动作
 
 1. 先补 BSR Top100、主关键词和 20-30 个竞品 ASIN。
 2. 将竞品按形态、价格、容量、评分、Review 痛点分层。
-3. 若需求和竞争结构仍有空间，再进入 QYPM 001-004。
+3. 若需求和竞争结构仍有空间，再进入阶段 001-004。
 
 ## 待会议裁定问题
 

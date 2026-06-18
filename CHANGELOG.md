@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 - 2026-06-18
+
+- Add English quick-start instructions.
+- Add anonymized low-data PM triage example.
+- Add anonymized BSR/ASIN QYPM stage-run example.
+- Improve README example inventory.
+
 ## 0.1.0 - 2026-06-16
 
 - Initial public release of Amazon PM Integrated Agent.

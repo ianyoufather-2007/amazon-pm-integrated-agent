@@ -32,6 +32,38 @@ flowchart TD
 
 ## Quick Start
 
+### English
+
+Copy this prompt into your agent runner:
+
+```text
+Act as Amazon PM Integrated Agent. First decide whether my input should be handled as lightweight PM triage or routed into the QYPM 000-007 workflow. Then return facts, interpretation, risks, missing data, and next actions. Do not invent sales, search volume, profit, FBA, compliance, patent, or review conclusions. Label missing evidence as P0/P1/P2.
+```
+
+Use this input format:
+
+```text
+Marketplace: Amazon US
+Product direction: coffee capsule holder
+Available evidence: main keywords, several competitor ASINs, partial review observations
+Goal: decide whether this category deserves deeper QYPM research
+```
+
+Expected output:
+
+```text
+## Summary
+## Current Stage
+## Known Facts
+## Signal Reading
+## Risks
+## Data Gaps
+## Next Actions
+## Decisions For Meeting
+```
+
+### 中文
+
 Copy this prompt into Codex, ChatGPT, or another agent runner together with `AGENT.md`:
 
 ```text
@@ -112,6 +144,8 @@ amazon-pm-integrated-agent/
 │   └── open-source-cleanup-checklist.md
 └── examples/
     ├── anonymized-opportunity-review.md
+    ├── anonymized-low-data-triage.md
+    ├── anonymized-bsr-asin-stage-run.md
     ├── quick-opportunity-triage.md
     └── qypm-stage-run.md
 ```

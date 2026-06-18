@@ -24,3 +24,5 @@
 - `examples/quick-opportunity-triage.md` — 资料不足时先做 PM 初判。
 - `examples/qypm-stage-run.md` — 有数据时进入 QYPM 阶段执行。
 - `examples/anonymized-opportunity-review.md` — 脱敏机会评审完整输出示例。
+- `examples/anonymized-low-data-triage.md` — 只有产品想法和零散观察时的 PM Triage 示例。
+- `examples/anonymized-bsr-asin-stage-run.md` — 已有 BSR/关键词/ASIN 时进入 QYPM 001-004 的示例。

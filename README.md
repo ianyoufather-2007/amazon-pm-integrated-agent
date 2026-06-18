@@ -93,6 +93,21 @@ Then provide what you already have:
 我有竞品评论和 Q&A，想做 VOC 产品定义。请按 Stage 005 输出事实层、判读层、风险层和待决策层。
 ```
 
+## Stage Templates
+
+Reusable prompt templates are available in `templates/`:
+
+| Stage | Template |
+| --- | --- |
+| 000 | `templates/stage-000-triage.md` |
+| 001 | `templates/stage-001-company-fit.md` |
+| 002 | `templates/stage-002-demand-trend.md` |
+| 003 | `templates/stage-003-market-structure.md` |
+| 004 | `templates/stage-004-competitor-map.md` |
+| 005 | `templates/stage-005-voc-definition.md` |
+| 006 | `templates/stage-006-roi-risk.md` |
+| 007 | `templates/stage-007-validation.md` |
+
 ## Relationship To Upstream Work
 
 | Project | Role | Status |
@@ -138,6 +153,15 @@ amazon-pm-integrated-agent/
 ├── AGENT.md
 ├── agent.yaml
 ├── SKILL_INDEX.md
+├── templates/
+│   ├── stage-000-triage.md
+│   ├── stage-001-company-fit.md
+│   ├── stage-002-demand-trend.md
+│   ├── stage-003-market-structure.md
+│   ├── stage-004-competitor-map.md
+│   ├── stage-005-voc-definition.md
+│   ├── stage-006-roi-risk.md
+│   └── stage-007-validation.md
 ├── docs/
 │   ├── workflow-routing.md
 │   ├── stage-gates.md

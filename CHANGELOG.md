@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4 - 2026-06-18
+
+- Added copy-ready templates for Stage 000 through Stage 007.
+- Added a template index in `templates/README.md`.
+- Updated README and skill index to surface the reusable templates.
+
 ## 0.1.3 - 2026-06-18
 
 - Sanitized internal workflow naming in public docs and examples.

@@ -19,11 +19,11 @@ Describe the expected agent behavior.
 Which stage does this affect?
 
 - [ ] PM Triage
-- [ ] QYPM 000
-- [ ] QYPM 001-003
-- [ ] QYPM 004
-- [ ] QYPM 005
-- [ ] QYPM 006-007
+- [ ] Stage 000
+- [ ] Stages 001-003
+- [ ] Stage 004
+- [ ] Stage 005
+- [ ] Stages 006-007
 - [ ] Excel/PPT/QA handoff
 
 ## Privacy check

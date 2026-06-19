@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5 - 2026-06-19
+
+- Removed remaining internal workflow naming from GitHub issue and pull request templates.
+- Kept public maintenance templates aligned around generic stage-gate routing.
+
 ## 0.1.4 - 2026-06-18
 
 - Added copy-ready templates for Stage 000 through Stage 007.

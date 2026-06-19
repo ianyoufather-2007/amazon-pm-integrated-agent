@@ -7,7 +7,7 @@ What changed?
 Which part of the agent does this affect?
 
 - [ ] PM Triage
-- [ ] QYPM routing
+- [ ] Stage-gate routing
 - [ ] Stage gates
 - [ ] Examples
 - [ ] Documentation

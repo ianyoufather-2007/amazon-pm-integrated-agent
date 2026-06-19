@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.8 - 2026-06-19
+
+- Replaced remaining public README wording with a cleaner stage-gate package description.
+
 ## 0.1.7 - 2026-06-19
 
 - Added README badges for release, license, and open issues.

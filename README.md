@@ -118,7 +118,7 @@ Reusable prompt templates are available in `templates/`:
 | --- | --- | --- |
 | [`amazon-product-manager-skill`](https://github.com/ianyoufather-2007/amazon-product-manager-skill) | Core Amazon PM skill and decision framework | Public |
 | [`01-product-manager-workflow-agent`](https://github.com/ianyoufather-2007/01-product-manager-workflow-agent) | Lightweight PM workflow wrapper | Public |
-| 000-007 stage-gate workflow package | Full internal funnel for market, competitor, VOC, ROI, supply chain, compliance, patent, and sample validation | Not bundled here |
+| 000-007 stage-gate workflow package | Extended stage-gate funnel for market, competitor, VOC, ROI, supply chain, compliance, patent, and sample validation | Not bundled here |
 | `amazon-pm-integrated-agent` | Clean routing layer that combines PM triage with stage gates | This repo |
 
 This repository intentionally publishes the clean agent layer, templates, examples, and stage-gate summaries. It does not include private raw data, internal reports, screenshots, supplier quotes, or customer/business records.

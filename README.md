@@ -1,5 +1,9 @@
 ﻿# Amazon PM Integrated Agent
 
+[![Release](https://img.shields.io/github/v/release/ianyoufather-2007/amazon-pm-integrated-agent?display_name=tag)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/releases)
+[![License](https://img.shields.io/github/license/ianyoufather-2007/amazon-pm-integrated-agent)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/ianyoufather-2007/amazon-pm-integrated-agent)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/issues)
+
 An integrated Amazon product-management agent that routes loose product ideas into PM triage or a structured 000-007 stage-gate research workflow.
 
 这是一个面向 Amazon 选品、产品定义和上会决策的整合型 Agent。它不会替你拍板，而是先判断问题处于哪个产品开发阶段，再选择轻量 PM 判断或完整的 000-007 阶段门工作流，最后输出可验证、可复盘、可继续执行的材料。

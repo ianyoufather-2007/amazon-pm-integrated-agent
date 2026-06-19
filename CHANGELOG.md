@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.6 - 2026-06-19
+
+- Added `CODE_OF_CONDUCT.md` for public collaboration expectations.
+- Added `SUPPORT.md` with safe support and privacy guidance.
+
 ## 0.1.5 - 2026-06-19
 
 - Removed remaining internal workflow naming from GitHub issue and pull request templates.

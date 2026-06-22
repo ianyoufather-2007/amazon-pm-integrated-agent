@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/github/license/ianyoufather-2007/amazon-pm-integrated-agent)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/ianyoufather-2007/amazon-pm-integrated-agent)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/issues)
 [![Privacy Check](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/privacy-check.yml/badge.svg)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/privacy-check.yml)
+[![Content Check](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/content-check.yml/badge.svg)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/content-check.yml)
 
 An integrated Amazon product-management agent that routes loose product ideas into PM triage or a structured 000-007 stage-gate research workflow.
 
@@ -98,6 +99,15 @@ Then provide what you already have:
 我有竞品评论和 Q&A，想做 VOC 产品定义。请按 Stage 005 输出事实层、判读层、风险层和待决策层。
 ```
 
+## Examples
+
+- [Quick opportunity triage](examples/quick-opportunity-triage.md)
+- [Research stage run](examples/stage-run.md)
+- [Anonymized low-data triage](examples/anonymized-low-data-triage.md)
+- [Anonymized BSR/ASIN stage run](examples/anonymized-bsr-asin-stage-run.md)
+- [Anonymized opportunity review](examples/anonymized-opportunity-review.md)
+- [Anonymized end-to-end stage-gate review](examples/anonymized-end-to-end-stage-gate-review.md)
+
 ## Stage Templates
 
 Reusable prompt templates are available in `templates/`:
@@ -119,7 +129,7 @@ Reusable prompt templates are available in `templates/`:
 | --- | --- | --- |
 | [`amazon-product-manager-skill`](https://github.com/ianyoufather-2007/amazon-product-manager-skill) | Core Amazon PM skill and decision framework | Public |
 | [`01-product-manager-workflow-agent`](https://github.com/ianyoufather-2007/01-product-manager-workflow-agent) | Lightweight PM workflow wrapper | Public |
-| 000-007 stage-gate workflow package | Extended stage-gate funnel for market, competitor, VOC, ROI, supply chain, compliance, patent, and sample validation | Not bundled here |
+| 000-007 stage-gate extension | Advanced stage-gate patterns for market, competitor, VOC, ROI, supply chain, compliance, patent, and sample validation | Optional extension |
 | `amazon-pm-integrated-agent` | Clean routing layer that combines PM triage with stage gates | This repo |
 
 This repository intentionally publishes the clean agent layer, templates, examples, and stage-gate summaries. It does not include private raw data, internal reports, screenshots, supplier quotes, or customer/business records.
@@ -133,6 +143,16 @@ Run the public-cleanup scanner before publishing changes:
 ```
 
 The GitHub Actions workflow runs the same check on pushes and pull requests. It flags local machine paths, internal project markers, token-like secrets, raw cookie headers, and session credential wording.
+
+## Content Quality Check
+
+Run the content guardrail before publishing workflow changes:
+
+```powershell
+./scripts/content-check.ps1
+```
+
+The GitHub Actions workflow checks that stage templates keep the required sections, examples include P0/P1/P2 data gaps, and public entrypoint files avoid confusing private-package wording.
 
 ## Output Template
 
@@ -182,11 +202,13 @@ amazon-pm-integrated-agent/
 │   ├── stage-gates.md
 │   └── open-source-cleanup-checklist.md
 ├── scripts/
+│   ├── content-check.ps1
 │   └── privacy-check.ps1
 └── examples/
     ├── anonymized-opportunity-review.md
     ├── anonymized-low-data-triage.md
     ├── anonymized-bsr-asin-stage-run.md
+    ├── anonymized-end-to-end-stage-gate-review.md
     ├── quick-opportunity-triage.md
     └── stage-run.md
 ```

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.10 - 2026-06-22
+
+- Replaced confusing private-package wording in the public agent entrypoint and skill index.
+- Added an anonymized end-to-end stage-gate review example from product idea to meeting memo.
+- Added a content-quality scanner and GitHub Actions workflow for stage-template and example guardrails.
+- Added the content-check badge and usage instructions to the README.
+
 ## 0.1.9 - 2026-06-22
 
 - Added a privacy-cleanup scanner for local paths, internal markers, token-like secrets, cookies, and session credential wording.

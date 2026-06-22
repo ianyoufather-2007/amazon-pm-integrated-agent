@@ -13,7 +13,7 @@
 
 - Core skill: `amazon-product-manager-skill`
 - PM workflow wrapper: `01-product-manager-workflow-agent`
-- Stage-gate funnel package: private/internal 000-007 workflow package, not bundled in this clean public repository
+- Stage-gate extension: optional advanced 000-007 workflow patterns for market, competitor, VOC, ROI, supply-chain, compliance, patent, and validation review
 
 ## Operating Principles
 

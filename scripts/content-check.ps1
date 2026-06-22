@@ -1,0 +1,136 @@
+param(
+    [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+)
+
+$ErrorActionPreference = 'Stop'
+
+$rootPath = (Resolve-Path $Root).Path
+$failures = New-Object System.Collections.Generic.List[string]
+
+function Add-Failure {
+    param([string]$Message)
+    $failures.Add($Message) | Out-Null
+}
+
+function Read-RepoText {
+    param([string]$RelativePath)
+
+    $path = Join-Path $rootPath $RelativePath
+    if (-not (Test-Path -LiteralPath $path)) {
+        Add-Failure "Missing required file: $RelativePath"
+        return ''
+    }
+
+    return Get-Content -LiteralPath $path -Encoding UTF8 -Raw
+}
+
+function Test-Contains {
+    param(
+        [string]$Text,
+        [string]$Needle,
+        [string]$Context
+    )
+
+    if (-not $Text.Contains($Needle)) {
+        Add-Failure "$Context is missing '$Needle'"
+    }
+}
+
+$templateDir = Join-Path $rootPath 'templates'
+$templates = Get-ChildItem -LiteralPath $templateDir -Filter 'stage-*.md' -File | Sort-Object Name
+
+if ($templates.Count -lt 8) {
+    Add-Failure "Expected at least 8 stage templates, found $($templates.Count)"
+}
+
+$requiredTemplateSections = @(
+    '## Purpose',
+    '## Use When',
+    '## Required Input',
+    '## Copy-Ready Prompt',
+    '## Allowed Output',
+    '## Forbidden Output'
+)
+
+foreach ($template in $templates) {
+    $relative = "templates/$($template.Name)"
+    $text = Get-Content -LiteralPath $template.FullName -Encoding UTF8 -Raw
+
+    foreach ($section in $requiredTemplateSections) {
+        Test-Contains -Text $text -Needle $section -Context $relative
+    }
+
+    Test-Contains -Text $text -Needle 'Known facts' -Context $relative
+    Test-Contains -Text $text -Needle 'P0/P1/P2 data gaps' -Context $relative
+    Test-Contains -Text $text -Needle 'Decisions for meeting' -Context $relative
+    Test-Contains -Text $text -Needle 'Rules:' -Context $relative
+
+    if ($text -notmatch '(?i)risk') {
+        Add-Failure "$relative should include risk handling"
+    }
+}
+
+$exampleDir = Join-Path $rootPath 'examples'
+$examples = Get-ChildItem -LiteralPath $exampleDir -Filter '*.md' -File | Sort-Object Name
+
+if ($examples.Count -lt 6) {
+    Add-Failure "Expected at least 6 examples, found $($examples.Count)"
+}
+
+foreach ($example in $examples) {
+    $relative = "examples/$($example.Name)"
+    $text = Get-Content -LiteralPath $example.FullName -Encoding UTF8 -Raw
+
+    if ($text -notmatch 'P0|P1|P2') {
+        Add-Failure "$relative should include P0/P1/P2 data-gap handling"
+    }
+}
+
+$requiredFiles = @(
+    'examples/anonymized-end-to-end-stage-gate-review.md',
+    'scripts/privacy-check.ps1',
+    'scripts/content-check.ps1',
+    '.github/workflows/privacy-check.yml',
+    '.github/workflows/content-check.yml'
+)
+
+foreach ($file in $requiredFiles) {
+    if (-not (Test-Path -LiteralPath (Join-Path $rootPath $file))) {
+        Add-Failure "Missing required maintenance file: $file"
+    }
+}
+
+$publicEntrypoints = @(
+    'AGENT.md',
+    'agent.yaml',
+    'README.md',
+    'SKILL_INDEX.md'
+)
+
+$confusingPhrases = @(
+    'private/internal',
+    'internal stage-gate source package',
+    'Not bundled here'
+)
+
+foreach ($file in $publicEntrypoints) {
+    $text = Read-RepoText $file
+    foreach ($phrase in $confusingPhrases) {
+        if ($text.Contains($phrase)) {
+            Add-Failure "$file contains confusing public wording: $phrase"
+        }
+    }
+}
+
+$readme = Read-RepoText 'README.md'
+Test-Contains -Text $readme -Needle 'Privacy Check' -Context 'README.md'
+Test-Contains -Text $readme -Needle 'Content Quality Check' -Context 'README.md'
+Test-Contains -Text $readme -Needle 'anonymized-end-to-end-stage-gate-review.md' -Context 'README.md'
+
+if ($failures.Count -gt 0) {
+    Write-Host 'Content check failed:'
+    $failures | ForEach-Object { Write-Host "- $_" }
+    exit 1
+}
+
+Write-Host 'Content check passed.'

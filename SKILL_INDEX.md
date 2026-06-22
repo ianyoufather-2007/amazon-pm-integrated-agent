@@ -4,7 +4,7 @@
 
 - [`amazon-product-manager-skill`](https://github.com/ianyoufather-2007/amazon-product-manager-skill) — 核心 Amazon PM 判断框架。
 - [`01-product-manager-workflow-agent`](https://github.com/ianyoufather-2007/01-product-manager-workflow-agent) — PM 判断、机会初筛、风险梳理、老板汇报。
-- 000-007 stage-gate workflow package — 本地/私有漏斗执行包；本仓库只发布干净的路由层、阶段门摘要和脱敏示例。
+- 000-007 stage-gate extension — 面向更复杂研究项目的进阶阶段门模式；本仓库发布干净的路由层、阶段门摘要、模板和脱敏示例。
 
 ## Stage-Gate Key Files
 
@@ -27,6 +27,7 @@
 - `examples/anonymized-opportunity-review.md` — 脱敏机会评审完整输出示例。
 - `examples/anonymized-low-data-triage.md` — 只有产品想法和零散观察时的 PM Triage 示例。
 - `examples/anonymized-bsr-asin-stage-run.md` — 已有 BSR/关键词/ASIN 时进入阶段 001-004 的示例。
+- `examples/anonymized-end-to-end-stage-gate-review.md` — 从产品想法到会议 memo 的端到端阶段门示例。
 
 ## Templates
 

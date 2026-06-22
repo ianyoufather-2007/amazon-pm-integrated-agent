@@ -12,14 +12,14 @@ recommended_use:
 upstream_repositories:
   core_skill: https://github.com/ianyoufather-2007/amazon-product-manager-skill
   pm_workflow_agent: https://github.com/ianyoufather-2007/01-product-manager-workflow-agent
-bundled_scope:
+included_scope:
   - clean routing layer
   - public stage-gate summaries
   - prompt templates
   - anonymized examples
-not_bundled:
+excluded_scope:
   - raw ASIN data
-  - internal stage-gate source package
+  - optional advanced stage-gate source files
   - Excel/PPT/PDF deliverables
   - screenshots/cache/private business records
 output_rules:

@@ -3,6 +3,7 @@
 [![Release](https://img.shields.io/github/v/release/ianyoufather-2007/amazon-pm-integrated-agent?display_name=tag)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/releases)
 [![License](https://img.shields.io/github/license/ianyoufather-2007/amazon-pm-integrated-agent)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/ianyoufather-2007/amazon-pm-integrated-agent)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/issues)
+[![Privacy Check](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/privacy-check.yml/badge.svg)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/privacy-check.yml)
 
 An integrated Amazon product-management agent that routes loose product ideas into PM triage or a structured 000-007 stage-gate research workflow.
 
@@ -123,6 +124,16 @@ Reusable prompt templates are available in `templates/`:
 
 This repository intentionally publishes the clean agent layer, templates, examples, and stage-gate summaries. It does not include private raw data, internal reports, screenshots, supplier quotes, or customer/business records.
 
+## Privacy Check
+
+Run the public-cleanup scanner before publishing changes:
+
+```powershell
+./scripts/privacy-check.ps1
+```
+
+The GitHub Actions workflow runs the same check on pushes and pull requests. It flags local machine paths, internal project markers, token-like secrets, raw cookie headers, and session credential wording.
+
 ## Output Template
 
 ```text
@@ -170,6 +181,8 @@ amazon-pm-integrated-agent/
 │   ├── workflow-routing.md
 │   ├── stage-gates.md
 │   └── open-source-cleanup-checklist.md
+├── scripts/
+│   └── privacy-check.ps1
 └── examples/
     ├── anonymized-opportunity-review.md
     ├── anonymized-low-data-triage.md

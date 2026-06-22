@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.9 - 2026-06-22
+
+- Added a privacy-cleanup scanner for local paths, internal markers, token-like secrets, cookies, and session credential wording.
+- Added a GitHub Actions workflow that runs the privacy check on pushes and pull requests.
+- Added the privacy-check badge and usage instructions to the README.
+
 ## 0.1.8 - 2026-06-19
 
 - Replaced remaining public README wording with a cleaner stage-gate package description.

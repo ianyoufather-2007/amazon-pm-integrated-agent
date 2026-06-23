@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.11 - 2026-06-23
+
+- Added a Codex for Open Source application note for reviewers and maintainers.
+- Added a README recommended-entrypoint section that points reviewers to the main repository and application note.
+- Expanded the roadmap with maintainer workflow, eval, and community-example milestones.
+
 ## 0.1.10 - 2026-06-22
 
 - Replaced confusing private-package wording in the public agent entrypoint and skill index.

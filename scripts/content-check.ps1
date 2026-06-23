@@ -88,6 +88,7 @@ foreach ($example in $examples) {
 
 $requiredFiles = @(
     'examples/anonymized-end-to-end-stage-gate-review.md',
+    'docs/codex-for-oss-application.md',
     'scripts/privacy-check.ps1',
     'scripts/content-check.ps1',
     '.github/workflows/privacy-check.yml',
@@ -126,6 +127,12 @@ $readme = Read-RepoText 'README.md'
 Test-Contains -Text $readme -Needle 'Privacy Check' -Context 'README.md'
 Test-Contains -Text $readme -Needle 'Content Quality Check' -Context 'README.md'
 Test-Contains -Text $readme -Needle 'anonymized-end-to-end-stage-gate-review.md' -Context 'README.md'
+Test-Contains -Text $readme -Needle 'codex-for-oss-application.md' -Context 'README.md'
+
+$applicationNote = Read-RepoText 'docs/codex-for-oss-application.md'
+Test-Contains -Text $applicationNote -Needle 'Project summary' -Context 'docs/codex-for-oss-application.md'
+Test-Contains -Text $applicationNote -Needle 'How Codex helps maintain this project' -Context 'docs/codex-for-oss-application.md'
+Test-Contains -Text $applicationNote -Needle 'Application draft' -Context 'docs/codex-for-oss-application.md'
 
 if ($failures.Count -gt 0) {
     Write-Host 'Content check failed:'

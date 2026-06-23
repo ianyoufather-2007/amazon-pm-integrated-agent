@@ -10,6 +10,12 @@ An integrated Amazon product-management agent that routes loose product ideas in
 
 这是一个面向 Amazon 选品、产品定义和上会决策的整合型 Agent。它不会替你拍板，而是先判断问题处于哪个产品开发阶段，再选择轻量 PM 判断或完整的 000-007 阶段门工作流，最后输出可验证、可复盘、可继续执行的材料。
 
+## Recommended Entry Point
+
+This is the main public repository for the Amazon PM agent workflow. Start here if you want the complete routing layer, templates, examples, quality checks, and maintainer notes.
+
+For grant or open-source review context, see [docs/codex-for-oss-application.md](docs/codex-for-oss-application.md).
+
 ## What It Helps With
 
 - 判断一个品类或产品方向是否值得继续深挖。
@@ -200,6 +206,7 @@ amazon-pm-integrated-agent/
 ├── docs/
 │   ├── workflow-routing.md
 │   ├── stage-gates.md
+│   ├── codex-for-oss-application.md
 │   └── open-source-cleanup-checklist.md
 ├── scripts/
 │   ├── content-check.ps1

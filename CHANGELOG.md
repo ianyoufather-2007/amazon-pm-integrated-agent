@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 - 2026-06-25
+
+- Fixed the handoff regression test exit status under cross-platform `pwsh`.
+
 ## 0.2.0 - 2026-06-25
 
 - Added a public three-round execution model with explicit stage boundaries and cross-round invariants.

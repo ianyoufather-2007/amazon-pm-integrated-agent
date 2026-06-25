@@ -1,6 +1,6 @@
 ﻿id: amazon-pm-integrated-agent
 name: Amazon PM Integrated Agent
-version: 0.2.0
+version: 0.2.1
 language: zh-CN
 entrypoint: AGENT.md
 recommended_use:

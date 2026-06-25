@@ -44,3 +44,4 @@ finally {
 }
 
 Write-Host 'Handoff check tests passed.'
+exit 0

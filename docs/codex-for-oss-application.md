@@ -48,9 +48,10 @@ The project currently includes:
 - `agent.yaml` metadata
 - Stage 000-007 prompt templates
 - anonymized examples, including an end-to-end stage-gate review
+- a machine-readable stage handoff contract and anonymized JSON example
 - `SECURITY.md`, `SUPPORT.md`, `CONTRIBUTING.md`, and `CODE_OF_CONDUCT.md`
 - `CHANGELOG.md` and versioned releases
-- GitHub Actions for privacy and content checks
+- GitHub Actions for privacy, content, and handoff-contract checks
 
 The repository intentionally avoids:
 
@@ -83,8 +84,8 @@ With more Codex access, the next improvements would be:
 2. Add lightweight eval prompts for stage routing and unsupported-claim detection.
 3. Add more anonymized category examples after privacy review.
 4. Add contribution examples that show good and bad workflow submissions.
-5. Add issue labels and triage rules for documentation, examples, templates, privacy, and quality checks.
-6. Improve the relationship between the core skill, workflow wrapper, and integrated agent so new users know where to start.
+5. Collect documented user feedback and convert accepted cases into privacy-reviewed regression examples.
+6. Add issue labels and triage rules for documentation, examples, templates, privacy, and quality checks.
 
 ## Application draft
 

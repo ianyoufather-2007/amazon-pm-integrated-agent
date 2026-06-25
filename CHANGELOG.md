@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 - 2026-06-25
+
+- Added a public three-round execution model with explicit stage boundaries and cross-round invariants.
+- Added a machine-readable stage handoff JSON Schema and anonymized example.
+- Added a PowerShell handoff validator, regression tests, and GitHub Actions workflow.
+- Added delivery QA covering evidence, decisions, cross-stage consistency, artifacts, and executive pressure testing.
+- Updated the agent entrypoint, metadata, skill index, contribution guide, README, and roadmap for the new contract.
+
 ## 0.1.11 - 2026-06-23
 
 - Added a Codex for Open Source application note for reviewers and maintainers.

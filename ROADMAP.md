@@ -9,11 +9,14 @@
 
 ## v0.2
 
-- Add English README sections.
-- Add more anonymized category examples.
-- Expand 000-007 stage-gate prompt templates.
-- Add install/use notes for Codex and ChatGPT.
-- Add maintainer notes for Codex-based open-source review and contribution workflows.
+- [x] Add English README sections.
+- [x] Add more anonymized examples.
+- [x] Expand 000-007 stage-gate prompt templates.
+- [x] Add install/use notes for Codex and ChatGPT.
+- [x] Add maintainer notes for Codex-based open-source review and contribution workflows.
+- [x] Publish three-round execution boundaries and cross-round invariants.
+- [x] Add a machine-readable stage handoff contract with regression tests.
+- [x] Add delivery QA and an executive pressure-test checklist.
 
 ## v0.3
 
@@ -21,6 +24,7 @@
 - Add example meeting memo outputs.
 - Add QA checklist for Excel/PPT handoff.
 - Add lightweight eval prompts for stage routing, missing-data discipline, and unsupported-claim detection.
+- Add at least one community-reviewed example or documented user feedback item.
 
 ## Later
 

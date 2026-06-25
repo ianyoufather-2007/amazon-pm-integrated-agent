@@ -1,6 +1,6 @@
 ﻿id: amazon-pm-integrated-agent
 name: Amazon PM Integrated Agent
-version: 1.0.0
+version: 0.2.0
 language: zh-CN
 entrypoint: AGENT.md
 recommended_use:
@@ -15,6 +15,9 @@ upstream_repositories:
 included_scope:
   - clean routing layer
   - public stage-gate summaries
+  - three-round execution boundaries
+  - machine-readable handoff contract
+  - delivery QA and executive pressure test
   - prompt templates
   - anonymized examples
 excluded_scope:
@@ -27,6 +30,7 @@ output_rules:
   - 默认 Amazon US
   - 区分事实层、判读层、风险层、待决策层
   - 缺失数据必须标注 P0/P1/P2
+  - 跨阶段交接必须写明允许输出、禁止输出和验收条件
   - 不编造数据
   - 不替用户或会议做最终裁定
   - 不替代法律、合规、财务、专利或采购专业意见

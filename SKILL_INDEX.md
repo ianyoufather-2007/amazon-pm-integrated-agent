@@ -11,6 +11,10 @@
 - `AGENT.md` — 公开 agent 入口和路由原则。
 - `docs/workflow-routing.md` — 输入资料和阶段路线的对应关系。
 - `docs/stage-gates.md` — 000-007 阶段门摘要。
+- `docs/three-round-workflow.md` — 三轮执行边界、退出门和跨轮一致性规则。
+- `docs/handoff-contract.md` — 阶段间证据交接和 P0/P1/P2 缺口契约。
+- `docs/delivery-qa.md` — 证据、决策、跨阶段和上会压力测试清单。
+- `schemas/stage-handoff.schema.json` — 可机器读取的阶段交接 JSON Schema。
 - `templates/` — 000-007 可复制 prompt 模板。
 - `examples/` — 脱敏输入和预期输出示例。
 
@@ -28,6 +32,14 @@
 - `examples/anonymized-low-data-triage.md` — 只有产品想法和零散观察时的 PM Triage 示例。
 - `examples/anonymized-bsr-asin-stage-run.md` — 已有 BSR/关键词/ASIN 时进入阶段 001-004 的示例。
 - `examples/anonymized-end-to-end-stage-gate-review.md` — 从产品想法到会议 memo 的端到端阶段门示例。
+- `examples/anonymized-stage-handoff.json` — 可通过自动校验的脱敏阶段交接示例。
+
+## Validation
+
+- `scripts/privacy-check.ps1` — 检查个人路径、内部标记和凭证风险。
+- `scripts/content-check.ps1` — 检查模板、示例和公开入口完整性。
+- `scripts/handoff-check.ps1` — 检查阶段交接结构、边界和缺口纪律。
+- `scripts/handoff-check.tests.ps1` — 覆盖有效交接、非法状态和 blocked/P0 规则。
 
 ## Templates
 

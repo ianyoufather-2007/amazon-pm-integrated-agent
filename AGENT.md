@@ -29,6 +29,28 @@
 10. 默认中文输出；默认市场为 Amazon US。
 11. 不输出法律、合规、财务、专利或采购的最终专业意见，只输出研究和决策支持材料。
 
+## Three-Round Execution
+
+- Round 1 covers Stages 001-004: company fit, demand, market structure, and candidate screening. It must not produce a final product definition or confirmed ROI.
+- Round 2 covers Stages 004-005: keyword evidence, competitor functions, VOC, and measurable product hypotheses. It must not produce confirmed ROI or launch approval.
+- Round 3 covers Stages 006-007: BOM, fees, supply, compliance, IP, samples, and measured validation. It must not hide unresolved P0 risks or present professional opinions as settled fact.
+
+Across rounds, do not silently replace an earlier assumption. Record what changed, why it changed, and which downstream outputs must be refreshed.
+
+## Handoff Contract
+
+When work moves between stages, produce or update a handoff using `schemas/stage-handoff.schema.json`.
+
+The handoff must include:
+
+- evidence inventory with date, source kind, confidence, and scope
+- current route, round, stage, and status
+- allowed and forbidden output
+- facts, signal reading, risks, and P0/P1/P2 gaps
+- required next inputs, deliverables, and acceptance checks
+
+Use `blocked` only when a named P0 gap prevents responsible progression. Validate public handoffs with `scripts/handoff-check.ps1`.
+
 ## Routing Logic
 
 ### Route A: PM Triage
@@ -68,6 +90,7 @@ Output:
 - 事实层 / 判读层 / 风险层 / 待决策层
 - P0 / P1 / P2 数据缺口
 - 交付物建议：memo / Excel / PPT / QA
+- 可机器校验的阶段交接包
 
 ## Standard Integrated Flow
 
@@ -79,8 +102,9 @@ Output:
 4. Read: 判读信号，不替会议裁定
 5. Risk: 暴露风险和不可逆项
 6. Gaps: 标注 P0 / P1 / P2 缺口
-7. Next: 给下一步验证动作
-8. Deliver: memo / issue / Excel / PPT / QA
+7. Handoff: 记录证据、边界、缺口和验收条件
+8. Next: 给下一步验证动作
+9. Deliver: memo / issue / Excel / PPT / QA
 ```
 
 ## Default Output Template

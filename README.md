@@ -5,6 +5,7 @@
 [![Issues](https://img.shields.io/github/issues/ianyoufather-2007/amazon-pm-integrated-agent)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/issues)
 [![Privacy Check](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/privacy-check.yml/badge.svg)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/privacy-check.yml)
 [![Content Check](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/content-check.yml/badge.svg)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/content-check.yml)
+[![Handoff Contract Check](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/handoff-check.yml/badge.svg)](https://github.com/ianyoufather-2007/amazon-pm-integrated-agent/actions/workflows/handoff-check.yml)
 
 An integrated Amazon product-management agent that routes loose product ideas into PM triage or a structured 000-007 stage-gate research workflow.
 
@@ -41,6 +42,16 @@ flowchart TD
     G --> H
     H --> I[Meeting-ready next actions]
 ```
+
+## Three-Round Execution
+
+| Round | Main stages | Evidence focus | Boundary |
+| --- | --- | --- | --- |
+| Round 1 | 001-004 | company fit, demand, market structure, candidates | no final product definition or confirmed ROI |
+| Round 2 | 004-005 | competitor evidence, keywords, VOC, product hypothesis | no confirmed ROI or launch approval |
+| Round 3 | 006-007 | BOM, fees, supply, compliance, IP, samples | no hidden P0 risks or invented professional conclusions |
+
+See [docs/three-round-workflow.md](docs/three-round-workflow.md) for exit gates and cross-round invariants.
 
 ## Quick Start
 
@@ -113,6 +124,7 @@ Then provide what you already have:
 - [Anonymized BSR/ASIN stage run](examples/anonymized-bsr-asin-stage-run.md)
 - [Anonymized opportunity review](examples/anonymized-opportunity-review.md)
 - [Anonymized end-to-end stage-gate review](examples/anonymized-end-to-end-stage-gate-review.md)
+- [Anonymized machine-readable stage handoff](examples/anonymized-stage-handoff.json)
 
 ## Stage Templates
 
@@ -160,6 +172,17 @@ Run the content guardrail before publishing workflow changes:
 
 The GitHub Actions workflow checks that stage templates keep the required sections, examples include P0/P1/P2 data gaps, and public entrypoint files avoid confusing private-package wording.
 
+## Handoff Contract Check
+
+Use the portable handoff contract when one stage or agent passes work to another:
+
+```powershell
+./scripts/handoff-check.ps1
+./scripts/handoff-check.tests.ps1
+```
+
+The contract records evidence inventory, current round and stage, allowed and forbidden output, P0/P1/P2 gaps, deliverables, and acceptance checks. See [docs/handoff-contract.md](docs/handoff-contract.md), [schemas/stage-handoff.schema.json](schemas/stage-handoff.schema.json), and [docs/delivery-qa.md](docs/delivery-qa.md).
+
 ## Output Template
 
 ```text
@@ -206,16 +229,24 @@ amazon-pm-integrated-agent/
 ├── docs/
 │   ├── workflow-routing.md
 │   ├── stage-gates.md
+│   ├── three-round-workflow.md
+│   ├── handoff-contract.md
+│   ├── delivery-qa.md
 │   ├── codex-for-oss-application.md
 │   └── open-source-cleanup-checklist.md
+├── schemas/
+│   └── stage-handoff.schema.json
 ├── scripts/
 │   ├── content-check.ps1
+│   ├── handoff-check.ps1
+│   ├── handoff-check.tests.ps1
 │   └── privacy-check.ps1
 └── examples/
     ├── anonymized-opportunity-review.md
     ├── anonymized-low-data-triage.md
     ├── anonymized-bsr-asin-stage-run.md
     ├── anonymized-end-to-end-stage-gate-review.md
+    ├── anonymized-stage-handoff.json
     ├── quick-opportunity-triage.md
     └── stage-run.md
 ```

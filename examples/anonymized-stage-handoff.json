@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "project": {
+    "marketplace": "Amazon US",
+    "product_direction": "Synthetic modular countertop organizer",
+    "language": "zh-CN"
+  },
+  "execution": {
+    "route": "stage_gate",
+    "round": "round_2",
+    "current_stage": 5,
+    "status": "conditional"
+  },
+  "evidence_inventory": [
+    {
+      "id": "E-001",
+      "type": "keyword cluster summary",
+      "source_kind": "synthetic",
+      "collected_on": "2026-06-20",
+      "record_count": 24,
+      "confidence": "confirmed",
+      "notes": "Synthetic example created only to demonstrate the public handoff format."
+    },
+    {
+      "id": "E-002",
+      "type": "anonymized review theme summary",
+      "source_kind": "synthetic",
+      "collected_on": "2026-06-20",
+      "record_count": 80,
+      "confidence": "estimated",
+      "notes": "No customer text, account data, or real seller export is included."
+    }
+  ],
+  "stage_gate": {
+    "allowed_outputs": [
+      "VOC themes and scenario clusters",
+      "parameterized product-definition hypotheses",
+      "Stage 006 validation checklist"
+    ],
+    "forbidden_outputs": [
+      "Confirmed ROI",
+      "Final compliance or patent conclusion",
+      "Launch approval"
+    ],
+    "known_facts": [
+      "Users in the synthetic evidence set value adjustable compartment width.",
+      "The available evidence does not include supplier quotes or measured package dimensions."
+    ],
+    "signal_reading": [
+      "Adjustability may be a useful product-definition direction, but the mechanism is not yet validated."
+    ],
+    "risks": [
+      "Added mechanism complexity may increase cost, defect rate, and package size."
+    ],
+    "data_gaps": [
+      {
+        "priority": "P0",
+        "gap": "Supplier quote and part-level BOM",
+        "why_it_matters": "Stage 006 cannot produce a defensible ROI range without confirmed cost inputs.",
+        "next_action": "Request comparable quotes using one parameterized product-definition sheet."
+      },
+      {
+        "priority": "P1",
+        "gap": "Measured package dimensions",
+        "why_it_matters": "FBA fee sensitivity depends on the packaged size and weight.",
+        "next_action": "Measure the first sample and rerun the fee model."
+      },
+      {
+        "priority": "P2",
+        "gap": "Color preference evidence",
+        "why_it_matters": "It affects variant planning but does not block the next validation stage.",
+        "next_action": "Collect public listing and review signals after the structural concept is stable."
+      }
+    ],
+    "decisions_for_meeting": [
+      "Whether to fund supplier RFQs and one functional sample.",
+      "Whether adjustability is a required feature or an optional variant."
+    ]
+  },
+  "handoff": {
+    "next_stage": 6,
+    "required_inputs": [
+      "Part-level BOM",
+      "Supplier quote with MOQ and lead time",
+      "Packaged dimensions and weight",
+      "FBA and freight assumptions"
+    ],
+    "deliverables": [
+      "Stage 005 product-definition hypothesis",
+      "P0/P1/P2 evidence-gap register",
+      "Stage 006 research request"
+    ],
+    "acceptance_checks": [
+      "Every numeric claim points to an evidence item or is labeled as an estimate.",
+      "Product requirements use measurable values, ranges, enums, or explicit pending fields.",
+      "No final ROI, compliance, patent, or launch decision appears in the Stage 005 handoff."
+    ]
+  }
+}

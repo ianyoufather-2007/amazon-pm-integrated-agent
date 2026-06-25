@@ -88,9 +88,17 @@ foreach ($example in $examples) {
 
 $requiredFiles = @(
     'examples/anonymized-end-to-end-stage-gate-review.md',
+    'examples/anonymized-stage-handoff.json',
     'docs/codex-for-oss-application.md',
+    'docs/delivery-qa.md',
+    'docs/handoff-contract.md',
+    'docs/three-round-workflow.md',
+    'schemas/stage-handoff.schema.json',
+    'scripts/handoff-check.ps1',
+    'scripts/handoff-check.tests.ps1',
     'scripts/privacy-check.ps1',
     'scripts/content-check.ps1',
+    '.github/workflows/handoff-check.yml',
     '.github/workflows/privacy-check.yml',
     '.github/workflows/content-check.yml'
 )
@@ -126,8 +134,26 @@ foreach ($file in $publicEntrypoints) {
 $readme = Read-RepoText 'README.md'
 Test-Contains -Text $readme -Needle 'Privacy Check' -Context 'README.md'
 Test-Contains -Text $readme -Needle 'Content Quality Check' -Context 'README.md'
+Test-Contains -Text $readme -Needle 'Handoff Contract Check' -Context 'README.md'
 Test-Contains -Text $readme -Needle 'anonymized-end-to-end-stage-gate-review.md' -Context 'README.md'
+Test-Contains -Text $readme -Needle 'anonymized-stage-handoff.json' -Context 'README.md'
 Test-Contains -Text $readme -Needle 'codex-for-oss-application.md' -Context 'README.md'
+
+$threeRoundWorkflow = Read-RepoText 'docs/three-round-workflow.md'
+Test-Contains -Text $threeRoundWorkflow -Needle 'Round 1' -Context 'docs/three-round-workflow.md'
+Test-Contains -Text $threeRoundWorkflow -Needle 'Round 2' -Context 'docs/three-round-workflow.md'
+Test-Contains -Text $threeRoundWorkflow -Needle 'Round 3' -Context 'docs/three-round-workflow.md'
+Test-Contains -Text $threeRoundWorkflow -Needle 'Cross-round invariants' -Context 'docs/three-round-workflow.md'
+
+$handoffContract = Read-RepoText 'docs/handoff-contract.md'
+Test-Contains -Text $handoffContract -Needle 'Evidence inventory' -Context 'docs/handoff-contract.md'
+Test-Contains -Text $handoffContract -Needle 'Allowed and forbidden output' -Context 'docs/handoff-contract.md'
+Test-Contains -Text $handoffContract -Needle 'P0 / P1 / P2' -Context 'docs/handoff-contract.md'
+
+$deliveryQa = Read-RepoText 'docs/delivery-qa.md'
+Test-Contains -Text $deliveryQa -Needle 'Evidence QA' -Context 'docs/delivery-qa.md'
+Test-Contains -Text $deliveryQa -Needle 'Decision QA' -Context 'docs/delivery-qa.md'
+Test-Contains -Text $deliveryQa -Needle 'Executive pressure test' -Context 'docs/delivery-qa.md'
 
 $applicationNote = Read-RepoText 'docs/codex-for-oss-application.md'
 Test-Contains -Text $applicationNote -Needle 'Project summary' -Context 'docs/codex-for-oss-application.md'

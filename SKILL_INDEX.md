@@ -23,6 +23,7 @@
 - `docs/workflow-routing.md` — 01/02/03 路由关系。
 - `docs/stage-gates.md` — 研究阶段门摘要。
 - `docs/open-source-cleanup-checklist.md` — 后续开源清理清单。
+- `docs/input-templates.md` — BSR / 关键词 / ASIN / VOC / ROI / 供应商等结构化输入模板（JSON 格式，可直接粘贴进 prompt）。
 
 ## Examples
 
@@ -32,6 +33,7 @@
 - `examples/anonymized-low-data-triage.md` — 只有产品想法和零散观察时的 PM Triage 示例。
 - `examples/anonymized-bsr-asin-stage-run.md` — 已有 BSR/关键词/ASIN 时进入阶段 001-004 的示例。
 - `examples/anonymized-end-to-end-stage-gate-review.md` — 从产品想法到会议 memo 的端到端阶段门示例。
+- `examples/anonymized-meeting-memo.md` — Stage 007 完成后的完整会议备忘录输出，含决策表、风险、行动项和利润模型。
 - `examples/anonymized-stage-handoff.json` — 可通过自动校验的脱敏阶段交接示例。
 
 ## Validation

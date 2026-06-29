@@ -18,7 +18,7 @@ function Read-RepoText {
     $path = Join-Path $rootPath $RelativePath
     if (-not (Test-Path -LiteralPath $path)) {
         Add-Failure "Missing required file: $RelativePath"
-        return ''
+        return $null
     }
 
     return Get-Content -LiteralPath $path -Encoding UTF8 -Raw
@@ -31,6 +31,7 @@ function Test-Contains {
         [string]$Context
     )
 
+    if ($null -eq $Text) { return }
     if (-not $Text.Contains($Needle)) {
         Add-Failure "$Context is missing '$Needle'"
     }
@@ -124,9 +125,11 @@ $confusingPhrases = @(
 
 foreach ($file in $publicEntrypoints) {
     $text = Read-RepoText $file
-    foreach ($phrase in $confusingPhrases) {
-        if ($text.Contains($phrase)) {
-            Add-Failure "$file contains confusing public wording: $phrase"
+    if ($null -ne $text) {
+        foreach ($phrase in $confusingPhrases) {
+            if ($text.Contains($phrase)) {
+                Add-Failure "$file contains confusing public wording: $phrase"
+            }
         }
     }
 }

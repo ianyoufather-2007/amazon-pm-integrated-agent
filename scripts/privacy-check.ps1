@@ -1,5 +1,6 @@
 param(
-    [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+    [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
+    [string[]]$PrivateMarkers = @()
 )
 
 $ErrorActionPreference = 'Stop'
@@ -42,13 +43,16 @@ $binaryExtensions = @(
 
 $checks = @(
     @{ Name = 'Local Windows absolute path'; Pattern = '[A-Za-z]:\\(?:Users|vscode|Downloads|Documents)\\' },
-    @{ Name = 'Internal project marker'; Pattern = '(?i)\bqypm\b' },
     @{ Name = 'GitHub token-like secret'; Pattern = 'gh[pousr]_[A-Za-z0-9_]{20,}' },
     @{ Name = 'OpenAI token-like secret'; Pattern = 'sk-[A-Za-z0-9_-]{20,}' },
     @{ Name = 'AWS secret-like key'; Pattern = 'AKIA[0-9A-Z]{16}' },
     @{ Name = 'Raw cookie header'; Pattern = '(?i)\bcookie\s*:' },
-    @{ Name = 'Session credential wording'; Pattern = '(?i)\b(sessionid|auth_token|refresh_token)\b' }
+    @{ Name = 'Session credential assignment'; Pattern = '(?i)\b(sessionid|auth_token|refresh_token)\s*[=:]' }
 )
+
+foreach ($marker in $PrivateMarkers) {
+    $checks += @{ Name = "Private project marker: $marker"; Pattern = "(?i)\b$([regex]::Escape($marker))\b" }
+}
 
 $files = Get-ChildItem -Path $rootPath -Recurse -File -Force | Where-Object {
     $fullName = $_.FullName

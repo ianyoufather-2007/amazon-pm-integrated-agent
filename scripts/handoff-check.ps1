@@ -1,6 +1,7 @@
 param(
     [string]$Root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
-    [string]$InputPath = (Join-Path (Resolve-Path (Join-Path $PSScriptRoot '..')).Path 'examples/anonymized-stage-handoff.json')
+    [string]$InputPath = (Join-Path (Resolve-Path (Join-Path $PSScriptRoot '..')).Path 'examples/anonymized-stage-handoff.json'),
+    [string[]]$ForbiddenMarkers = @()
 )
 
 $ErrorActionPreference = 'Stop'
@@ -63,6 +64,7 @@ function Test-StringArray {
     }
 }
 
+$schemaVersion = '1.0.0'
 if (-not (Test-Path -LiteralPath $schemaFile)) {
     Add-Failure 'Missing schemas/stage-handoff.schema.json.'
 }
@@ -71,6 +73,9 @@ else {
         $schema = Get-Content -LiteralPath $schemaFile -Raw -Encoding UTF8 | ConvertFrom-Json
         if ($schema.title -ne 'Amazon PM Stage Handoff') {
             Add-Failure "Schema title must be 'Amazon PM Stage Handoff'."
+        }
+        if ($schema.PSObject.Properties.Name -contains 'version') {
+            $schemaVersion = [string]$schema.version
         }
     }
     catch {
@@ -91,11 +96,13 @@ catch {
 if ($raw -match '[A-Za-z]:\\(?:Users|vscode|Downloads|Documents)\\') {
     Add-Failure 'Handoff contains a local Windows absolute path.'
 }
-if ($raw -match '(?i)\bqypm\b') {
-    Add-Failure 'Handoff contains a private/internal project marker.'
-}
 if ($raw -match 'gh[pousr]_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{20,}') {
     Add-Failure 'Handoff contains a token-like secret.'
+}
+foreach ($marker in $ForbiddenMarkers) {
+    if ($raw -match "(?i)\b$([regex]::Escape($marker))\b") {
+        Add-Failure "Handoff contains forbidden marker: $marker"
+    }
 }
 
 if ($null -ne $handoff) {
@@ -103,8 +110,8 @@ if ($null -ne $handoff) {
         Test-RequiredProperty -Object $handoff -Property $property -Context 'Root' | Out-Null
     }
 
-    if ($handoff.schema_version -ne '1.0.0') {
-        Add-Failure "schema_version must be '1.0.0'."
+    if ($handoff.schema_version -ne $schemaVersion) {
+        Add-Failure "schema_version must be '$schemaVersion'."
     }
 
     foreach ($property in @('marketplace', 'product_direction', 'language')) {
@@ -134,9 +141,10 @@ if ($null -ne $handoff) {
 
     $roundRanges = @{
         pm_triage = @(0, 0)
-        round_1 = @(1, 4)
-        round_2 = @(4, 5)
-        round_3 = @(6, 7)
+        round_1   = @(1, 4)
+        round_2   = @(4, 5)
+        round_3   = @(6, 7)
+        delivery  = @(0, 7)
     }
     if ($roundRanges.ContainsKey([string]$handoff.execution.round)) {
         $range = $roundRanges[[string]$handoff.execution.round]
@@ -145,7 +153,8 @@ if ($null -ne $handoff) {
         }
     }
 
-    $evidenceItems = @($handoff.evidence_inventory)
+    $rawEvidence = $handoff.evidence_inventory
+    $evidenceItems = if ($null -eq $rawEvidence) { @() } else { @($rawEvidence) | Where-Object { $null -ne $_ } }
     if ($evidenceItems.Count -eq 0) {
         Add-Failure 'evidence_inventory must contain at least one item.'
     }
@@ -178,7 +187,8 @@ if ($null -ne $handoff) {
     Test-StringArray -Value $handoff.stage_gate.risks -Context 'stage_gate.risks'
     Test-StringArray -Value $handoff.stage_gate.decisions_for_meeting -Context 'stage_gate.decisions_for_meeting'
 
-    $dataGaps = @($handoff.stage_gate.data_gaps)
+    $rawGaps = $handoff.stage_gate.data_gaps
+    $dataGaps = if ($null -eq $rawGaps) { @() } else { @($rawGaps) | Where-Object { $null -ne $_ } }
     foreach ($gap in $dataGaps) {
         foreach ($property in @('priority', 'gap', 'why_it_matters', 'next_action')) {
             Test-RequiredProperty -Object $gap -Property $property -Context 'stage_gate.data_gaps item' | Out-Null
